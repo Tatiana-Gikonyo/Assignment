@@ -28,7 +28,6 @@ document.getElementById("akanForm").addEventListener("submit", function (event) 
   const century = Math.floor(year / 100);
   const yearDigits = year % 100;
 
-  // Formula for day of the week
   const dayOfWeek = Math.floor(
     (century / 4 -
       2 * century -
@@ -39,7 +38,7 @@ document.getElementById("akanForm").addEventListener("submit", function (event) 
       7
   );
 
-  const correctedDayOfWeek = (dayOfWeek + 7) % 7; // Ensure the day of the week is non-negative
+  const correctedDayOfWeek = (dayOfWeek + 7) % 7; 
 
   const maleNames = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"];
   const femaleNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
