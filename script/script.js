@@ -1,17 +1,18 @@
-document.getElementById("akanForm").addEventListener("submit", function (e) {
-  e.preventDefault();
+document.getElementById("akanForm").addEventListener("submit", function (event) {
+  event.preventDefault();
 
   const birthDate = document.getElementById("birthDate").value;
   const gender = document.getElementById("gender").value;
   const errorElement = document.getElementById("error");
   const resultElement = document.getElementById("result");
 
+  // Clear previous messages
   errorElement.textContent = "";
   resultElement.textContent = "";
 
+  // Validate input
   if (!birthDate || !gender) {
-    errorElement.textContent =
-      "Please enter a valid date and select your gender.";
+    errorElement.textContent = "Please enter a valid date and select your gender.";
     return;
   }
 
@@ -20,14 +21,16 @@ document.getElementById("akanForm").addEventListener("submit", function (e) {
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
 
-  if (day <= 0 || day > 31 || month <= 0 || month > 12) {
-    errorElement.textContent = "Invalid date or month. Please try again.";
+  // Ensure the date is valid
+  if (isNaN(date.getTime())) {
+    errorElement.textContent = "Invalid date. Please try again.";
     return;
   }
 
   const century = Math.floor(year / 100);
   const yearDigits = year % 100;
 
+  // Formula for day of the week
   const dayOfWeek = Math.floor(
     (century / 4 -
       2 * century -
@@ -38,35 +41,22 @@ document.getElementById("akanForm").addEventListener("submit", function (e) {
       7
   );
 
-  const maleNames = [
-    "Kwasi",
-    "Kwadwo",
-    "Kwabena",
-    "Kwaku",
-    "Yaw",
-    "Kofi",
-    "Kwame",
-  ];
-  const femaleNames = [
-    "Akosua",
-    "Adwoa",
-    "Abenaa",
-    "Akua",
-    "Yaa",
-    "Afua",
-    "Ama",
-  ];
-"
+  const correctedDayOfWeek = (dayOfWeek + 7) % 7; // Ensure the day of the week is non-negative
+
+  const maleNames = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"];
+  const femaleNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"];
+
   let akanName;
-  if (gender === "male"){
-    akanName = maleNames[correctdayOfWeek];
-   }else if (gender === "female"){
-    akanName = femaleNames[correctedDayofweek];
-   }else {
-    output.textContent = "Invalid gender is selected.";
-    output.style.color = "red";
+
+  if (gender === "male") {
+    akanName = maleNames[correctedDayOfWeek];
+  } else if (gender === "female") {
+    akanName = femaleNames[correctedDayOfWeek];
+  } else {
+    errorElement.textContent = "Invalid gender selected.";
     return;
-   }
-   output.textContent = 'Your Akan name is ${akanName}!';
-   output.style.color = "green";
-  });
+  }
+
+  resultElement.textContent = `Your Akan name is ${akanName}!`;
+  resultElement.style.color = "green";
+});
