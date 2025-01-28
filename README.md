@@ -1,7 +1,3 @@
-Here’s a sample `README.md` for your Akan Name Generator project:
-
----
-
 # Akan Name Generator
 
 ### Description
