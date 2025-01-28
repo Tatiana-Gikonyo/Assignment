@@ -6,11 +6,9 @@ document.getElementById("akanForm").addEventListener("submit", function (event) 
   const errorElement = document.getElementById("error");
   const resultElement = document.getElementById("result");
 
-  // Clear previous messages
   errorElement.textContent = "";
   resultElement.textContent = "";
 
-  // Validate input
   if (!birthDate || !gender) {
     errorElement.textContent = "Please enter a valid date and select your gender.";
     return;
