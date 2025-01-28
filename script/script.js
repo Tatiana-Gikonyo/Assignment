@@ -33,8 +33,8 @@ document.getElementById("akanForm").addEventListener("submit", function (event) 
     (century / 4 -
       2 * century -
       1 +
-      (5 * yearDigits) / 4 +
-      (26 * (month + 1)) / 10 +
+      Math.floor(5 * yearDigits) / 4 +
+      Math.floor(26 * (month + 1)) / 10 +
       day) %
       7
   );
