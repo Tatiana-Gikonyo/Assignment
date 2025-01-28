@@ -29,11 +29,11 @@ document.getElementById("akanForm").addEventListener("submit", function (event) 
   const yearDigits = year % 100;
 
   const dayOfWeek = Math.floor(
-    (century / 4 -
-      2 * century -
+    (CC / 4 -
+      2 * CC -
       1 +
-      Math.floor(5 * yearDigits) / 4 +
-      Math.floor(26 * (month + 1)) / 10 +
+      Math.floor(5 * YY) / 4) +
+      Math.floor(26 * (adjustedMonth + 1)) / 10) +
       day) %
       7
   );
