@@ -56,8 +56,17 @@ document.getElementById("akanForm").addEventListener("submit", function (e) {
     "Afua",
     "Ama",
   ];
-
-  const akanName =
-    gender === "male" ? maleNames[dayOfWeek] : femaleNames[dayOfWeek];
-  resultElement.textContent = `Your Akan name is ${akanName}.`;
-});
+"
+  let akanName;
+  if (gender === "male"){
+    akanName = maleNames[correctdayOfWeek];
+   }else if (gender === "female"){
+    akanName = femaleNames[correctedDayofweek];
+   }else {
+    output.textContent = "Invalid gender is selected.";
+    output.style.color = "red";
+    return;
+   }
+   output.textContent = 'Your Akan name is ${akanName}!';
+   output.style.color = "green";
+  });
